@@ -11,6 +11,7 @@ public class BikeShop {
 		System.out.println("View Bike Parts");
 		System.out.println("Book Appointment");
 		System.out.println("View Appointment");
+		System.out.println("Quit");
 		
 	}
 
