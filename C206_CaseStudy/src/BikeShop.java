@@ -6,13 +6,14 @@ public class BikeShop {
 	}
 	
 	public static void showMainMenu() {
-		BikeShop.setHeader("Main Menu");
-		System.out.println("View Bike");
-		System.out.println("View Bike Parts");
-		System.out.println("Book Appointment");
-		System.out.println("View Appointment");
-		System.out.println("Quit");
-		System.out.println("Buyer's information");
+		BikeShop.setHeader("1. Main Menu");
+		System.out.println("2. View Bike");
+		System.out.println("3. View Bike Parts");
+		System.out.println("4. Book Appointment");
+		System.out.println("5. View Appointment");
+		System.out.println("6. Buyer's information");
+		System.out.println("7. Quit");
+		
 		
 	}
 
