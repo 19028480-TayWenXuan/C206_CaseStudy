@@ -15,8 +15,6 @@ public class BikeShop {
 				System.out.println("Buyer's Information");
 			}
 				
-			
-
 			private static void setHeader(String header) {
 				Helper.line(80, "-");
 				System.out.println(header);
