@@ -9,6 +9,7 @@ public class BikeShop {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 ArrayList<Customer> customerArrayList = new ArrayList<Customer>();
+		 ArrayList<Appointment> appointmentArrayList = new ArrayList<Appointment>();
 		int option = 0;
 
 		while (option != 6) {
@@ -40,13 +41,28 @@ public class BikeShop {
 				
 				
 				
-				
-				
 		}
 			
 			else if (option == 3) {
 				Helper.line(20, "-");
 				System.out.println("Book Appointment");
+				
+				String date;
+				double time;
+				String customer = Helper.readString("Enter name: ");
+				boolean checkCustomer = customerArrayList.contains(customer);
+				
+				date = Helper.readString("Enter date in this format (DD/MM/YYYY) > ");
+				time = Helper.readDouble("Enter time in 24hr format > ");
+				
+
+				if(checkCustomer) {
+					appointmentArrayList.add(new Appointment(customer, date, time));
+				} else {
+					System.out.println("Not registered yet!"); 
+				}
+				
+				
 				
 				
 				
