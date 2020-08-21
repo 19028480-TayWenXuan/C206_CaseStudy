@@ -9,7 +9,9 @@ public class Appointment extends Customer{
 		super(customerName);
 		this.date = date;
 		this.time = time;
+		//this.time = customerName;
 	}
+	
 
 	public String getDate() {
 		return date;
@@ -26,6 +28,18 @@ public class Appointment extends Customer{
 	public void setTime(String time) {
 		this.time = time;
 	}
+
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+	
+	
 	
 	
 	

@@ -16,6 +16,10 @@ public class BikeShop {
 
 		 ArrayList<Bike> bikeList = new ArrayList<Bike>();
 
+
+		 appointmentArrayList.add(new Appointment("21/8/2020", "15:00", "zuhaili"));
+		 appointmentArrayList.add(new Appointment("21/8/2020", "20:00", "farah"));
+		 
 		int option = 0;
 
 		while (option != 7) {
