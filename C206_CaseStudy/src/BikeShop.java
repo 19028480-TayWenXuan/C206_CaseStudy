@@ -18,7 +18,7 @@ public class BikeShop {
 
 		int option = 0;
 
-		while (option != 6) {
+		while (option != 7) {
 			showMainMenu();
 			option = Helper.readInt("Enter option > ");
 
@@ -36,7 +36,7 @@ public class BikeShop {
 					BikeShop.delBike(bikeList);
 				}
 				
-			}
+		}
 			
 			else if(option == 2) {
 				Helper.line(20, "-");
@@ -139,6 +139,25 @@ public class BikeShop {
 				}
 			}
 		}
+			//menu for member5
+		        else if(option == 6){
+				ShowFeedbackMenu();
+				int choice = Helper.readInt("Enter your choice:");
+				if (choice == 1) {
+					BikeShop.addFeedback(feedbackArrayList);
+				}
+				else if (choice == 2) {
+					BikeShop.viewAllFeedback(feedbackArrayList);
+				}
+				else if (choice == 3) {
+					BikeShop.delFeedback(feedbackArrayList);
+				}
+			}
+	        }
+					
+				
+		
+		       
 	}
 				
 	//member1 delete method
@@ -225,6 +244,7 @@ public class BikeShop {
 		System.out.println("3. Delete Bike");
 	}
 	
+
 	
 	
 	
@@ -243,6 +263,14 @@ public class BikeShop {
 	
 	
 	
+
+	// member 5 Feedback Menu
+	private static void ShowFeedbackMenu() {
+		System.out.println("1. Add Feedback");
+		System.out.println("2. View All Feedbacks");
+		System.out.println("3. Delete Feedbacks");
+	}
+
 	
 	//main menu
 	public static void showMainMenu() {
@@ -252,7 +280,8 @@ public class BikeShop {
 		System.out.println("3. Book Appointment");
 		System.out.println("4. View Appointment");
 		System.out.println("5. Buyer's information");
-		System.out.println("6. Quit");
+		System.out.println("6. Feedbacks");
+		System.out.println("7. Quit");
 	}
 	
 	
