@@ -5,29 +5,36 @@ public class BikeShop {
 
 	private static ArrayList<Customer> customerArrayList;
 	private static Customer customer;
+	private static ArrayList<Bike> bikeList;
+	private static Bike bike;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 ArrayList<Customer> customerArrayList = new ArrayList<Customer>();
+
 		 ArrayList<Appointment> appointmentArrayList = new ArrayList<Appointment>();
+
+		 ArrayList<Bike> bikeList = new ArrayList<Bike>();
+
 		int option = 0;
 
 		while (option != 6) {
 			showMainMenu();
 			option = Helper.readInt("Enter option > ");
 
+			// menu for member 2
 			if (option == 1) {
 				Helper.line(20, "-");
 				System.out.println("View Bike");
-				
-				
-				
-				
-				
-				
-				
-				
-				
+				ShowBikeMenu();
+				int choice = Helper.readInt("Enter your choice > ");
+				if(choice == 1) {
+					BikeShop.addBike(bikeList);
+				} else if(choice == 2) {
+					BikeShop.viewAllBike(bikeList);
+				} else if(choice == 3) {
+					BikeShop.delBike(bikeList);
+				}
 				
 			}
 			
@@ -48,12 +55,12 @@ public class BikeShop {
 				System.out.println("Book Appointment");
 				
 				String date;
-				double time;
+				String time;
 				String customer = Helper.readString("Enter name: ");
 				boolean checkCustomer = customerArrayList.contains(customer);
 				
 				date = Helper.readString("Enter date in this format (DD/MM/YYYY) > ");
-				time = Helper.readDouble("Enter time in 24hr format > ");
+				time = Helper.readString("Enter time in 24hr format > ");
 				
 
 				if(checkCustomer) {
@@ -66,12 +73,7 @@ public class BikeShop {
 				
 				
 				
-				
-				
-				
-				
-				
-				
+					
 				
 				
 		}
@@ -79,6 +81,38 @@ public class BikeShop {
 			else if(option == 4) {
 				Helper.line(20, "-");
 				System.out.println("View Appointment");
+				
+				//member 4 View Appointment
+				System.out.println(String.format("%-20s %-20s %-20s\n", "Date", "Time", "Customer name"));
+				for (int i = 0; i < appointmentArrayList.size(); i++) {
+					if (appointmentArrayList.isEmpty() == false) {
+						System.out.println( String.format("%-20s %-20s %-20s\n", appointmentArrayList.get(i).getDate(), appointmentArrayList.get(i).getTime(), appointmentArrayList.get(i).customerName()));
+
+					}
+				}
+					 
+				 
+			
+				//member 4  delete appointment
+				String delete = Helper.readString("Do you want to delete an appointment? (Y/N): ");
+				
+				 //public static void deleteAppointment(ArrayList<Appointment> appointmentArrayList) {
+				if (delete == "Y") {
+					String name = Helper.readString("Enter name:");
+					 
+					 for(int i =0; i<appointmentArrayList.size();i++) {
+						 if(appointmentArrayList.get(i).name != null) {
+							 appointmentArrayList.remove(i);
+						      System.out.println("Appointnment deleted!");
+						 }
+						 else {
+							 System.out.println("Appointnment does not exist!");
+						 }
+					 }
+				}
+					 				  
+				//}
+					
 				
 				
 				
@@ -96,33 +130,17 @@ public class BikeShop {
 				int choice = Helper.readInt("Enter your choice:");
 				if (choice == 1) {
 					BikeShop.addCustomer(customerArrayList);
-	 }
+				}
 				else if(choice == 2) {
 					BikeShop.viewAllCustomer(customerArrayList);
-	}
+				}
 				else if(choice == 3) {
 					BikeShop.delCustomer(customerArrayList);
 				}
 			}
 		}
-
-			  			  
-				}
+	}
 				
-		
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//member1 delete method
 	 public static void delCustomer(ArrayList<Customer> customerArrayList) {
 		 String name = Helper.readString("Enter name:");
@@ -138,7 +156,7 @@ public class BikeShop {
 		 
 	 }
 		
-//member1 view the list of buyer's information
+	 //member1 view the list of buyer's information
 	private static void viewAllCustomer(ArrayList <Customer> customer) {
 		// TODO Auto-generated method stub
 		System.out.println(String.format("%-20s %-20s %-20s\n", "NAME", "EMAIL", "PHONE"));
@@ -168,9 +186,65 @@ public class BikeShop {
 		    System.out.println("3. Delete customer");
 	}
 	
+	// member 2 create (add) bike info method
+	public static void addBike(ArrayList<Bike> bike) {
+		String model = Helper.readString("Enter model > ");
+		String description = Helper.readString("Enter description > ");
+		Boolean isAvailable = Helper.readBoolean("Available or not > ");
+		bike.add(new Bike(model,description, isAvailable));
+		System.out.println("Bike added!");
+	}
 	
-
-//main menu
+	// member 2 view the list of Bike's Information
+	public static void viewAllBike(ArrayList<Bike> bike) {
+		System.out.println(String.format("%-20s %-20s %-20s\n", "MODEL", "DESCRIPTION", "AVAILABILITIES"));
+		for(int i = 0; i < bike.size(); i++) {
+			if(bike.isEmpty() == false) {
+				System.out.println(String.format("%-20s %-20s %-20b\n", bike.get(i).getModel(), bike.get(i).getDescription(), bike.get(i).isAvailable()));
+			}
+		}
+	}
+	
+	// member 2 delete Bike method
+	public static void delBike(ArrayList<Bike> bikeList) {
+		String model = Helper.readString("Enter model: ");
+		for(int i = 0; i < bikeList.size(); i++) {
+			if(bikeList.get(i).getModel() != null) {
+				bikeList.remove(i);
+				System.out.println("Bike deleted!");
+			} else {
+				System.out.println("Bike does not exist!");
+			}
+		}
+	}
+	
+	// member 2 Bike Menu
+	private static void ShowBikeMenu() {
+		System.out.println("1. Add New Bike");
+		System.out.println("2. View All Bike");
+		System.out.println("3. Delete Bike");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//main menu
 	public static void showMainMenu() {
 		BikeShop.setHeader("Main Menu");
 		System.out.println("1. View Bike");
@@ -179,9 +253,17 @@ public class BikeShop {
 		System.out.println("4. View Appointment");
 		System.out.println("5. Buyer's information");
 		System.out.println("6. Quit");
-		
-		
 	}
+	
+	
+	
+		
+		
+		
+		
+	
+		
+		
 
 	private static void setHeader(String header) {
 		Helper.line(80, "-");
@@ -190,8 +272,4 @@ public class BikeShop {
 		
 	}
 
-}
-		
-	
-
-		
+}	
